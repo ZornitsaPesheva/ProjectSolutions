@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Solutions.Models.Module>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+@foreach (var item in Model)
+{
+
+    <h1> @Html.DisplayFor(modelItem => item.Name)</h1>
+
+}
+

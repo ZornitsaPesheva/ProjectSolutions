@@ -1,0 +1,20 @@
+﻿@model List<Solutions.Models.Course>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var course in Model)
+        {
+             <h2>
+                    @Html.ActionLink(string.Format($"{course.Name} ({course.Chapters.Count})"),
+                        "ListChapters", "Home", new { @courseId = course.Id }, null)
+             </h2>       
+
+        }
+    </div>
+</div>
+<hr />
+

@@ -1,0 +1,18 @@
+﻿@model List<Solutions.Models.Course>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var course in Model)
+        {
+            <h2>
+                @Html.ActionLink(@course.Name, "Details", "Article", new { @id = course.Id }, null)
+            </h2>
+
+        }
+    </div>
+</div>
+<hr />

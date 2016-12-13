@@ -1,0 +1,22 @@
+﻿@model List<Solutions.Models.Module>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var module in Model)
+        {
+
+                <p>
+                    <h2>
+                        @Html.ActionLink(string.Format($"{module.Name} ({module.Courses.Count})"),
+                        "ListCourses", "Home", new { @moduleId = module.Id }, null)
+                </h2>
+            </p>
+
+        }
+    </div>
+</div>
+<hr />
