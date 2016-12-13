@@ -32,7 +32,7 @@ namespace Solutions.Models
         public int CourseId { get; set; }
         public virtual Course Course { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
+      //  public virtual ICollection<Course> Courses { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
                
