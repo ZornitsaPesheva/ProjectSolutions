@@ -9,8 +9,8 @@
         @foreach (var module in Model)
         {
 
-                <p>
-                    <h2>
+            <p>
+                <h2>
                         @Html.ActionLink(string.Format($"{module.Name} ({module.Courses.Count})"),
                         "ListCourses", "Home", new { @moduleId = module.Id }, null)
                 </h2>

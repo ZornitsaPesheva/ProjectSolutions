@@ -27,7 +27,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.ChapterId, new { @class = "col-sm-4 control-label" })
                 <div class="dropdown col-sm-4">
-               лист     @Html.DropDownListFor(m => m.ChapterId,
+                        @Html.DropDownListFor(m => m.ChapterId,
                         new SelectList(Model.Chapters, "Id", "Title"), //name?
                         new { @class = "btn btn-info col-sm-12" })
                 </div>
