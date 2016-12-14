@@ -67,10 +67,11 @@ namespace Solutions.Controllers
             {
                 db.Modules.Add(module);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
-            return View(module);
+            //return View(module);
+            return RedirectToAction("List");
         }
 
         // GET: Modules/Edit/5
@@ -85,7 +86,8 @@ namespace Solutions.Controllers
             {
                 return HttpNotFound();
             }
-            return View(module);
+             return View(module);
+            
         }
 
         // POST: Modules/Edit/5
@@ -99,9 +101,10 @@ namespace Solutions.Controllers
             {
                 db.Entry(module).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            return View(module);
+            // return View(module);
+            return RedirectToAction("List");
         }
 
         // GET: Modules/Delete/5
@@ -127,7 +130,7 @@ namespace Solutions.Controllers
             Module module = db.Modules.Find(id);
             db.Modules.Remove(module);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)
