@@ -213,11 +213,13 @@
     <Compile Include="Models\ChapterViewModel.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\EditUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -295,6 +297,7 @@
     <Content Include="Views\Home\ListChapters.cshtml" />
     <Content Include="Views\Home\ListPosts.cshtml" />
     <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
