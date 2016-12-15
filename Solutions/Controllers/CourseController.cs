@@ -114,5 +114,40 @@ namespace Solutions.Controllers
             return View(model);
         }
 
+
+        // GET: Course/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Course course = db.Courses.Find(id);
+                if (course == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(course);
+            }
+
+                
+        }
+
+        // POST: Course/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                Course course = db.Courses.Find(id);
+                db.Courses.Remove(course);
+                db.SaveChanges();
+                return RedirectToAction("List");
+            }
+                
+        }
     }
 }
