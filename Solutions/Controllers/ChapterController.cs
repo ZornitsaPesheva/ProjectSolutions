@@ -1,9 +1,7 @@
 ﻿using Solutions.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,8 +9,6 @@ namespace Solutions.Controllers
 {
     public class ChapterController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Chapter
         public ActionResult Index()
         {
@@ -22,68 +18,27 @@ namespace Solutions.Controllers
         // GET: Chapter/List
         public ActionResult List()
         {
-
-            var chapters = db.Chapters
-                .ToList();
-
-            return View(chapters);
-
-        }
-
-        // GET: Chapter/Edit
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
+            using (var database = new ApplicationDbContext())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var chapters = database.Chapters
+                    .ToList();
+
+                return View(chapters);
             }
-
-
-            var chapter = db.Chapters
-                .Where(a => a.Id == id)
-                .First();
-
-            if (chapter == null)
-            {
-                return HttpNotFound();
-            }
-
-            var model = new ChapterViewModel();
-            model.Id = chapter.Id;
-            model.Title = chapter.Title;
-
-            return View(model);
-        }
-
-        // POST: Chapter/Edit
-        [HttpPost]
-        public ActionResult Edit(ChapterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var chapter = db.Chapters
-                    .FirstOrDefault(a => a.Id == model.Id);
-
-                chapter.Title = model.Title;
-
-                db.Entry(chapter).State = EntityState.Modified;
-                db.SaveChanges();
-
-                return RedirectToAction("Details", "Course", new { @id = model.CourseId });
-            }
-
-            return View(model);
         }
 
         // GET: Chapter/Create
-        public ActionResult Create(int courseId, string courseName)
+        public ActionResult Create()
         {
-            var model = new ChapterViewModel();
-            model.CourseId = courseId;
-            ViewBag.CourseName = courseName;
+            using (var database = new ApplicationDbContext())
+            {
+                var model = new ChapterViewModel();
+                model.Courses = database.Courses
+                    .OrderBy(c => c.Name)
+                    .ToList();
 
-            return View(model);
+                return View(model);
+            }
         }
 
         // POST: Chapter/Create
@@ -92,60 +47,17 @@ namespace Solutions.Controllers
         {
             if (ModelState.IsValid)
             {
+                using (var database = new ApplicationDbContext())
+                {
+                    var chapter = new Chapter(model.Title, model.CourseId);
 
-                var chapter = new Chapter(model.Title, model.CourseId);
+                    database.Chapters.Add(chapter);
+                    database.SaveChanges();
 
-                db.Chapters.Add(chapter);
-                db.SaveChanges();
-
-                return RedirectToAction("Details", "Course", new { @id = model.CourseId });
+                    return RedirectToAction("Index");
+                }
             }
             return View(model);
-        }
-
-        // GET: Chapter/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Chapter chapter = db.Chapters.Find(id);
-            if (chapter == null)
-            {
-                return HttpNotFound();
-            }
-            return View(chapter);
-        }
-
-        // POST: Chapter/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-
-            Chapter chapter = db.Chapters.Find(id);
-            var courseId = chapter.CourseId;
-            db.Chapters.Remove(chapter);
-            db.SaveChanges();
-            return RedirectToAction("Details", "Course", new { @id = courseId });
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null || !User.IsInRole("Admin"))
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Chapter chapter = db.Chapters.Find(id);
-            if (chapter == null)
-            {
-                return HttpNotFound();
-            }
-            chapter.Posts = db.Posts.Where(x => x.ChapterId == id).ToList();
-            return View(chapter);
         }
     }
 }

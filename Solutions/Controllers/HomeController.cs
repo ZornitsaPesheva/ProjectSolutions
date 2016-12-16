@@ -37,7 +37,7 @@ namespace Solutions.Controllers
             {
                 var modules = database.Modules
                     .Include(c => c.Courses)
-                 //   .OrderBy(c => c.Name)
+                    .OrderBy(m => m.Priority)
                     .ToList();
 
                 return View(modules);

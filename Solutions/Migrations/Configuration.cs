@@ -33,8 +33,8 @@ namespace Solutions.Migrations
             if (!context.Modules.Any())
             {
                 context.Modules.AddOrUpdate(x => x.Id,
-                    new Module() { Id = 1, Name = "Programming Basics" },
-                    new Module() { Id = 2, Name = "Tech Module" }
+                    new Module() { Id = 1, Name = "Programming Basics", Priority = 1 },
+                    new Module() { Id = 2, Name = "Tech Module", Priority = 2 }
                 );
 
                 context.Courses.AddOrUpdate(x => x.Id,

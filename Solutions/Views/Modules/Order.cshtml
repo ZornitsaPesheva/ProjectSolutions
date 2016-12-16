@@ -1,0 +1,34 @@
+﻿@model List<Solutions.Models.Module>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="well">
+        <h2>@Html.ActionLink("Create", "Create", "Modules")</h2>
+        <div class="row">
+            <table class="table table-striped table-hover col-sm-12">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var module in Model)
+                    {
+                        <tr>
+                            <td>@module.Id</td>
+                            <td>@module.Name</td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", "Modules", new { @id = module.Id }, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
