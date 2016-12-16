@@ -13,14 +13,29 @@
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Create course", "Create", "Course", new { moduleId = Model.Id, moduleName = Model.Name }, null)
 </p>
+<hr />
+<div>
+    <h4>Courses for Module</h4>
+    @if (Model.Courses.Count > 0)
+    {
+        <ul>
+            @foreach(var course in Model.Courses)
+            {
+                <li>
+                    @Html.ActionLink(course.Name, "Details", "Course", new { Id = course.Id }, null)
+                </li>
+            }
+        </ul>
+    }
+ </div>

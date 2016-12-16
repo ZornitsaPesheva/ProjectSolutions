@@ -1,0 +1,39 @@
+﻿@model Solutions.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+    @Html.ActionLink("Back to Module", "Details", "Modules", new { id = Model.ModuleId }, null) |
+    @Html.ActionLink("Create chapter", "Create", "Chapter", new { courseId = Model.Id, courseName = Model.Name }, null)
+</p>
+
+<h4>Chapters for Course</h4>
+@if (Model.Chapters.Count > 0)
+{
+    <ul>
+        @foreach (var chapter in Model.Chapters)
+        {
+            <li>
+                @Html.ActionLink(chapter.Title, "Details", "Chapter", new { Id = chapter.Id }, null)
+            </li>
+        }
+    </ul>
+}

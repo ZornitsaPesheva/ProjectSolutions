@@ -6,18 +6,21 @@
 
 <div class="container">
     <div class="row">
-        <h1>Modules:</h1>
-        @foreach (var module in Model)
-        {
-
-            <p>
-                <h2>
-                        @Html.ActionLink(string.Format($"{module.Name} ({module.Courses.Count})"),
-                        "ListCourses", "Home", new { @moduleId = module.Id }, null)
-                </h2>
-            </p>
-
-        }
+        
+        <table class="table table-hover" style="margin-top:100px">
+            @foreach (var module in Model)
+            {
+                <tr>
+                    <td>
+                        <h1>
+                            <!-- изтрих ({module.Courses.Count})-->
+                            @Html.ActionLink(string.Format($"{module.Name} "),
+                        "ListCourses", "Home", new { @moduleId = module.Id }, new { @style = "text-decoration:none;" })
+                        </h1>
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
 <hr />
