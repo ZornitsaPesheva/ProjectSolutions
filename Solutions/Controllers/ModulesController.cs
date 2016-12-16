@@ -13,8 +13,7 @@ namespace Solutions.Controllers
     public class ModulesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-             
+                     
         // GET: Modules
         public ActionResult Index()
         {
@@ -38,7 +37,7 @@ namespace Solutions.Controllers
         // GET: Modules/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null || !User.IsInRole("Admin"))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -47,6 +46,7 @@ namespace Solutions.Controllers
             {
                 return HttpNotFound();
             }
+            module.Courses = db.Courses.Where(x => x.ModuleId == module.Id).ToList();
             return View(module);
         }
 

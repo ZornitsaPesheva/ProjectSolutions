@@ -296,8 +296,13 @@
     <Content Include="Views\Home\ListPosts.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Chapter\Edit.cshtml" />
+    <Content Include="Views\Chapter\Create.cshtml" />
+    <Content Include="Views\Chapter\Delete.cshtml" />
+    <Content Include="Views\Chapter\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

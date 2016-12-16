@@ -5,31 +5,14 @@
 }
 
 <div class="container">
-    <div class="well">
-        <h2>@Html.ActionLink("Add Course", "Create", "Course")</h2>
-        <div class="row">
-            <table class="table table-striped table-hover col-sm-12">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var course in Model)
-                    {
-                        <tr>
-                            <td>@course.Id</td>
-                            <td>@course.Name</td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", "Course", new { @id = course.Id }, null)
-                                @Html.ActionLink("Delete", "Delete", "Course", new { @id = course.Id }, null)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+    <div class="row">
+        @foreach (var course in Model)
+        {
+            <h2>
+                @Html.ActionLink(@course.Name, "Details", "Article", new { @id = course.Id }, null)
+            </h2>
+
+        }
     </div>
 </div>
+<hr />
