@@ -20,6 +20,14 @@ namespace Solutions.Models
 
         public int ChapterId { get; set; }
 
+        public string Language { get; set; }
+
+        public List<string> Languages { get; set; }
+
+        public string Verify { get; set; }
+
+        public List<string> Verifies { get; set; }
+
         public ICollection<Chapter> Chapters { get; set; }
 
     }

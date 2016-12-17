@@ -147,5 +147,15 @@ namespace Solutions.Controllers
             chapter.Posts = db.Posts.Where(x => x.ChapterId == id).ToList();
             return View(chapter);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

@@ -151,5 +151,15 @@ namespace Solutions.Controllers
             course.Chapters = db.Chapters.Where(x => x.CourseId == course.Id).ToList();
             return View(course);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

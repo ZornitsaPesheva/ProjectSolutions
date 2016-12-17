@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Solutions.Enums;
 
 namespace Solutions.Controllers
 {
@@ -38,6 +39,9 @@ namespace Solutions.Controllers
                 model.Chapters = database.Chapters
                     .ToList();
 
+                model.Languages = Enum.GetNames(typeof(Languages)).ToList();
+                model.Verifies = Enum.GetNames(typeof(Verify)).ToList();
+
                 return View(model);
             }
         }
@@ -55,7 +59,7 @@ namespace Solutions.Controllers
                         .First()
                         .Id;
 
-                    var post = new Post(authorId, model.Title, model.Link, model.ChapterId);
+                    var post = new Post(authorId, model.Title, model.Link, model.ChapterId, model.Language, model.Verify);
 
                     database.Posts.Add(post);
                     database.SaveChanges();

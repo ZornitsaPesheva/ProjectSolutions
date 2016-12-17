@@ -14,12 +14,14 @@ namespace Solutions.Models
 
         }
 
-        public Post(string authorId, string title, string link, int chapterId)
+        public Post(string authorId, string title, string link, int chapterId, string languageId, string verified)
         {
             this.AuthorId = authorId;
             this.Title = title;
             this.Link = link;
             this.ChapterId = chapterId;
+            this.LanguageId = languageId;
+            this.Verified = verified;
         }
 
         [Key]
@@ -38,6 +40,10 @@ namespace Solutions.Models
         [ForeignKey("Chapter")]
         public int ChapterId { get; set; }
         public virtual Chapter Chapter { get; set; }
+
+        public string LanguageId { get; set; }
+
+        public string Verified { get; set; }
 
     }
 }

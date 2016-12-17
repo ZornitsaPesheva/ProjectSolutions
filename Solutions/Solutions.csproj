@@ -204,6 +204,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Enums\Verify.cs" />
+    <Compile Include="Enums\Languages.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,7 +295,7 @@
     <Content Include="Views\Post\Create.cshtml" />
     <Content Include="Views\Chapter\List.cshtml" />
     <Content Include="Views\Home\ListChapters.cshtml" />
-    <Content Include="Views\Home\ListPosts.cshtml" />
+    <Content Include="Views\Home\ListPosts2.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Course\Create.cshtml" />
@@ -303,6 +305,7 @@
     <Content Include="Views\Chapter\Create.cshtml" />
     <Content Include="Views\Chapter\Delete.cshtml" />
     <Content Include="Views\Chapter\Details.cshtml" />
+    <Content Include="Views\Home\ListPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
