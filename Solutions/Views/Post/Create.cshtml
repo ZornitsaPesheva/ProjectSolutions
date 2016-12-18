@@ -51,16 +51,16 @@
                     //Here must be placed by Defoult Verify = NotVerified
                 }
 
-              //  @Html.HiddenFor(m => )
+                @Html.HiddenFor(m => m.ChapterId);
 
-                <div class="form-group">
+                @*<div class="form-group">
                     @Html.LabelFor(m => m.ChapterId, new { @class = "col-sm-4 control-label" })
                     <div class="dropdown col-sm-4">
                         @Html.DropDownListFor(m => m.ChapterId,
                             new SelectList(Model.Chapters, "Id", "Title"), //name?
                             new { @class = "btn btn-info col-sm-12" })
                     </div>
-                </div>
+                </div>*@
 
 
                 <div class="form-group">

@@ -31,7 +31,7 @@ namespace Solutions.Controllers
         }
 
         // GET: Post/Create
-        public ActionResult Create()
+        public ActionResult Create(int? chapterId)
         {
             using (var database = new ApplicationDbContext())
             {
@@ -42,13 +42,14 @@ namespace Solutions.Controllers
                 model.Languages = Enum.GetNames(typeof(Languages)).ToList();
                 model.Verifies = Enum.GetNames(typeof(Verify)).ToList();
 
+                ViewBag.chapterId = chapterId;
                 return View(model);
             }
         }
 
         // POST: Post/Create
         [HttpPost]
-        public ActionResult Create(PostViewModel model)
+        public ActionResult Create(PostViewModel model, int chapterId)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +60,7 @@ namespace Solutions.Controllers
                         .First()
                         .Id;
 
-                    var post = new Post(authorId, model.Title, model.Link, model.ChapterId, model.Language, model.Verify);
+                    var post = new Post(authorId, model.Title, model.Link, chapterId, model.Language, model.Verify);
 
                     database.Posts.Add(post);
                     database.SaveChanges();
