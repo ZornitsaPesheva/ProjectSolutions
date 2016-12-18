@@ -5,31 +5,43 @@
 
 <div class="container">
     <div class="well">
-        <h2>@Html.ActionLink("Create Post", "Create", "Post")</h2>
+        @if (Request.IsAuthenticated)
+        {
+            <h2>@Html.ActionLink("Create / Post Solution", "Create", "Post")</h2>
+        }
+        else
+        {
+            <h2>List of Solutions:</h2>
+        }
         <div class="row">
 
             <table class="table table-striped table-hover col-sm-12">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Language</th>
-                        <th>Author</th>
-                        <th>Verified</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Language</th>
+                    <th>Author</th>
+                    <th>Verified</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var post in Model)
-                    {
-                        <tr>
-                            <td>@post.Id</td>
-                            <td><a href="@Html.DisplayFor(modelItem => post.Link)">@Html.DisplayFor(modelItem => post.Title)</a></td>
-                            <td>@post.LanguageId</td>
-                            <td>@post.Author.FullName</td>
-                            <td>@post.Verified</td>
+                @foreach (var post in Model)
+                {
+                    <tr>
+                        <td>@post.Id</td>
+                        <td><a href="@Html.DisplayFor(modelItem => post.Link)">@Html.DisplayFor(modelItem => post.Title)</a></td>
+                        <td>@post.LanguageId</td>
+                        <td>@post.Author.FullName</td>
+                        <td>@post.Verified</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Create", "Post", new {@id = post.Id}, null)
+                            @Html.ActionLink("Delete", "Delete", "Post", new { @id = post.Id }, null)
+                        </td>
 
-                        </tr>
-                    }
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>

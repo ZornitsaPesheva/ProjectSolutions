@@ -71,5 +71,18 @@ namespace Solutions.Controllers
         }
 
         // GET: Post/Delete
+
+
+
+        // GET: Post/Edit
+
+
+
+        // POST: Post/Edit
+
+
+
+
+
     }
 }
