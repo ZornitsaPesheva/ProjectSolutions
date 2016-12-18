@@ -64,7 +64,7 @@ namespace Solutions.Controllers
                     database.Posts.Add(post);
                     database.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ListPosts", "Home", new { @chapterId = model.ChapterId });
                 }
             }
             return View(model);
