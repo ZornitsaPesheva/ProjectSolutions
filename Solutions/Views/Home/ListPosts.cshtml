@@ -1,10 +1,13 @@
-﻿@model List<Solutions.Models.Post>
+﻿@model Solutions.Models.Chapter
 @{
     ViewBag.Title = "ListPosts";
 }
 
 <div class="container">
+    <h1><strong>@Html.DisplayFor(model => model.Title)</strong></h1>
     <div class="well">
+
+
         @if (Request.IsAuthenticated)
         {
             <h2>@Html.ActionLink("Create / Post Solution", "Create", "Post")</h2>
@@ -23,11 +26,11 @@
                     <th>Language</th>
                     <th>Author</th>
                     <th>Verified</th>
-                    <th>Actions</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var post in Model)
+                @foreach (var post in Model.Posts)
                 {
                     <tr>
                         <td>@post.Id</td>
@@ -36,8 +39,12 @@
                         <td>@post.Author.FullName</td>
                         <td>@post.Verified</td>
                         <td>
-                            @Html.ActionLink("Edit", "Create", "Post", new {@id = post.Id}, null)
-                            @Html.ActionLink("Delete", "Delete", "Post", new { @id = post.Id }, null)
+                            @if (User.IsInRole("Admin") || post.IsAuthor(User.Identity.Name))
+                            {
+                                @Html.ActionLink("Edit ", "Create", "Post", new { @id = post.Id }, null)
+
+                                @Html.ActionLink("Delete ", "Delete", "Post", new { @id = post.Id }, null)
+                            }
                         </td>
 
                     </tr>

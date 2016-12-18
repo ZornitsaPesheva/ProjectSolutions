@@ -103,6 +103,33 @@ namespace Solutions.Controllers
             return View(course);
         }
 
+        public ActionResult ListPosts(int? chapterId)
+        {
+            if (chapterId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+           Chapter chapter = database.Chapters.Find(chapterId);
+            if (chapter == null)
+            {
+                return HttpNotFound();
+            }
+            chapter.Posts = database.Posts.Where(x => x.ChapterId == chapter.Id)
+                .Include(p => p.Author)
+                .ToList();
+            return View(chapter);
+
+            //using (var database = new ApplicationDbContext())
+            //{
+            //    var posts = database.Posts
+            //        .Where(a => a.ChapterId == chapterId)
+            //        .Include(a => a.Author)
+            //        .ToList();
+
+            //    return View(posts);
+            //}
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -112,22 +139,6 @@ namespace Solutions.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult ListPosts(int? chapterId)
-        {
-            if (chapterId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            using (var database = new ApplicationDbContext())
-            {
-                var posts = database.Posts
-                    .Where(a => a.ChapterId == chapterId)
-                    .Include(a => a.Author)
-                    .ToList();
-
-                return View(posts);
-            }
-        }
+        
     }
 }

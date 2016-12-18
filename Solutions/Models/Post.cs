@@ -37,6 +37,11 @@ namespace Solutions.Models
         public string AuthorId { get; set; }
         public virtual ApplicationUser Author { get; set; }
 
+        public bool IsAuthor(string name)
+        {
+            return this.Author.UserName.Equals(name);
+        }
+
         [ForeignKey("Chapter")]
         public int ChapterId { get; set; }
         public virtual Chapter Chapter { get; set; }
