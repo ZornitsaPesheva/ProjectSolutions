@@ -325,7 +325,6 @@ C:\Users\zorry\Documents\GitHub\ProjectSolutions\Solutions\bin\Microsoft.Owin.Se
 C:\Users\zorry\Documents\GitHub\ProjectSolutions\Solutions\obj\Debug\Solutions.csprojResolveAssemblyReference.cache
 C:\Users\zorry\Documents\GitHub\ProjectSolutions\Solutions\obj\Debug\Solutions.dll
 C:\Users\zorry\Documents\GitHub\ProjectSolutions\Solutions\obj\Debug\Solutions.pdb
-C:\Git!\ProjectSolutions\Solutions\obj\Debug\Solutions.csprojResolveAssemblyReference.cache
 C:\Users\zorry\Documents\Solution\Solutions\bin\ApplicationInsights.config
 C:\Users\zorry\Documents\Solution\Solutions\bin\roslyn\csc.exe
 C:\Users\zorry\Documents\Solution\Solutions\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

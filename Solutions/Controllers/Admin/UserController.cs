@@ -162,5 +162,72 @@ private void SetUserRoles(EditUserViewModel model, ApplicationUser user, Applica
 
             return admin;
         }
+
+
+        // GET: User/Delete
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            using (var database = new ApplicationDbContext())
+            {
+
+                var user = database.Users
+                    .Where(u => u.Id.Equals(id))
+                    .First();
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var viewModel = new DeleteUserViewModel();
+                viewModel.User = user;
+                viewModel.Roles = GetUserRoles(user, database);
+
+                return View(viewModel);
+            }
+        }
+
+        // POST: User/Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult Delete(string id, DeleteUserViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var database = new ApplicationDbContext())
+                {
+                    // Get user from database
+                    var user = database.Users.FirstOrDefault(u => u.Id.Equals(id));
+
+                    if (user == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    // Get user posts from database
+                    var userPosts = database.Posts
+                        .Where(a => a.Author.Id.Equals(user.Id));
+
+                    // Delete user solutions
+                    foreach (var post in userPosts)
+                    {
+                        database.Posts.Remove(post);
+                    }
+
+                    // Delete user and save changes
+                    database.Users.Remove(user);
+                    database.SaveChanges();
+
+                    return RedirectToAction("List");
+
+                }
+            }
+            return RedirectToAction("List");
+        }
     }
 }

@@ -215,6 +215,7 @@
     <Compile Include="Models\ChapterViewModel.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
+    <Compile Include="Models\DeleteUserViewModel.cs" />
     <Compile Include="Models\EditUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -306,6 +307,7 @@
     <Content Include="Views\Chapter\Details.cshtml" />
     <Content Include="Views\Home\ListPosts.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
