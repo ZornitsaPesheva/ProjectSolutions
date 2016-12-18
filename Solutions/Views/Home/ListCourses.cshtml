@@ -1,4 +1,4 @@
-﻿@model List<Solutions.Models.Course>
+﻿@model Solutions.Models.Module
 
 @{
     ViewBag.Title = "List";
@@ -6,15 +6,19 @@
 
 <div class="container">
     <div class="row">
-        <h1>Courses:</h1>
-        @foreach (var course in Model)
+        <h1><strong>@Html.DisplayFor(model => model.Name)</strong></h1>
+      @if (Model.Courses.Count > 0)
+      {
+        foreach (var course in Model.Courses)
         {
-             <h2>
-                    @Html.ActionLink(string.Format($"{course.Name} ({course.Chapters.Count})"),
+            <h2>
+                @Html.ActionLink(string.Format($"{course.Name}"), // ({course.Chapters.Count})
                         "ListChapters", "Home", new { @courseId = course.Id }, null)
-             </h2>       
+            </h2>
 
         }
+      }
+
     </div>
 </div>
 <hr />

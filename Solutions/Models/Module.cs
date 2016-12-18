@@ -23,6 +23,8 @@ namespace Solutions.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        public int Priority { get; set; }
+
         public virtual ICollection<Course> Courses { get; set; }
 
 

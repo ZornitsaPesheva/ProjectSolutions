@@ -1,4 +1,4 @@
-﻿@model List<Solutions.Models.Chapter>
+﻿@model Solutions.Models.Course
 
 @{
     ViewBag.Title = "List";
@@ -6,15 +6,18 @@
 
 <div class="container">
     <div class="row">
-        <h1>Chapters:</h1>
-        @foreach (var chapter in Model)
+       <h1><strong>@Html.DisplayFor(model => model.Name)</strong></h1>
+@if (Model.Chapters.Count > 0)
+{
+        foreach (var chapter in Model.Chapters)
         {
             <h2>
-                @Html.ActionLink(string.Format($"{chapter.Title} ({chapter.Posts.Count})"),
-                        "ListPosts", "Home", new { @chapterId = chapter.Id }, null)
+                @Html.ActionLink(string.Format($"{chapter.Title} "), //({chapter.Posts.Count})
+                     "ListPosts", "Home", new { @chapterId = chapter.Id }, null)
             </h2>
 
         }
+}
     </div>
 </div>
 <hr />

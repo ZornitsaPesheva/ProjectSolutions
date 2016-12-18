@@ -28,6 +28,7 @@ namespace Solutions.Controllers
             using (var database = new ApplicationDbContext())
             {
                 var modules = database.Modules
+                    .OrderBy(m => m.Priority)
                     .ToList();
 
                 return View(modules);
@@ -61,7 +62,7 @@ namespace Solutions.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name")] Module module)
+        public ActionResult Create([Bind(Include = "ID,Name,Priority")] Module module)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +96,7 @@ namespace Solutions.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] Module module)
+        public ActionResult Edit([Bind(Include = "ID,Name,Priority")] Module module)
         {
             if (ModelState.IsValid)
             {

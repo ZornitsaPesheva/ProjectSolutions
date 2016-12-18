@@ -13,7 +13,9 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Priority</th>
                         <th>Actions</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +24,7 @@
                         <tr>
                             <td>@module.Id</td>
                             <td>@module.Name</td>
+                            <td>@module.Priority</td>
                             <td>
                                 @Html.ActionLink("Details", "Details", "Modules", new { @id = module.Id }, null)
                             </td>
