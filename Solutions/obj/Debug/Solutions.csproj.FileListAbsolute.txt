@@ -407,3 +407,4 @@ C:\Users\zorry\Documents\Solution\Solutions\bin\Microsoft.Owin.Security.Microsof
 C:\Users\zorry\Documents\Solution\Solutions\obj\Debug\Solutions.csprojResolveAssemblyReference.cache
 C:\Users\zorry\Documents\Solution\Solutions\obj\Debug\Solutions.dll
 C:\Users\zorry\Documents\Solution\Solutions\obj\Debug\Solutions.pdb
+C:\Git!\ProjectSolutions\Solutions\obj\Debug\Solutions.csprojResolveAssemblyReference.cache

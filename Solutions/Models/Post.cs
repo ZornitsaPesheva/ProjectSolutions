@@ -49,6 +49,5 @@ namespace Solutions.Models
         public string LanguageId { get; set; }
 
         public string Verified { get; set; }
-
-    }
+}
 }

@@ -26,7 +26,7 @@ namespace Solutions.Models
 
         public string Verify { get; set; }
 
-        public List<string> Verifies { get; set; }
+        public List<string> Verified { get; set; }
 
         public ICollection<Chapter> Chapters { get; set; }
 

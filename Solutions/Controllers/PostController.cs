@@ -40,7 +40,7 @@ namespace Solutions.Controllers
                     .ToList();
 
                 model.Languages = Enum.GetNames(typeof(Languages)).ToList();
-                model.Verifies = Enum.GetNames(typeof(Verify)).ToList();
+                model.Verified = Enum.GetNames(typeof(Verify)).ToList();
 
                 ViewBag.chapterId = chapterId;
                 return View(model);
@@ -72,6 +72,7 @@ namespace Solutions.Controllers
         }
 
         // GET: Post/Delete
+
 
 
 

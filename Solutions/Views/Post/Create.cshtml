@@ -1,4 +1,5 @@
 ﻿@using Solutions.Enums
+@using Solutions.Models
 @model Solutions.Models.PostViewModel
 @{
     ViewBag.Title = "Create";
@@ -38,17 +39,24 @@
                 if (User.IsInRole("Admin"))
                 {
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Verifies, new { @class = "col-sm-4 control-label" })
+                        @Html.LabelFor(m => m.Verified, new { @class = "col-sm-4 control-label" })
                         <div class="dropdown col-sm-4">
                             @Html.DropDownListFor(m => m.Verify,
-                            new SelectList(Model.Verifies),
+                            new SelectList(Model.Verified),
                             new { @class = "btn btn-info col-sm-12" })
                         </div>
                     </div>
                 }
                 else
                 {
-                    //Here must be placed by Defoult Verify = NotVerified
+                    <div class="form-group", hidden ="hidden">
+                        @Html.LabelFor(m => m.Verified, new { @class = "col-sm-4 control-label" })
+                        <div class="dropdown col-sm-4">
+                            @Html.DropDownListFor(m => m.Verify,
+                                new SelectList(Model.Verified),
+                                new { @class = "btn btn-info col-sm-12"})
+                        </div>
+                    </div>
                 }
 
                 @Html.HiddenFor(m => m.ChapterId);
