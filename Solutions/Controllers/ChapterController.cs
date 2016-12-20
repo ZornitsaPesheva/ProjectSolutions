@@ -63,14 +63,14 @@ namespace Solutions.Controllers
             {
 
                 var chapter = db.Chapters
-                    .FirstOrDefault(a => a.Id == model.Id);
+                    .FirstOrDefault(a => a.Id.Equals(model.Id));
 
                 chapter.Title = model.Title;
 
                 db.Entry(chapter).State = EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("Details", "Course", new { @id = model.CourseId });
+                return RedirectToAction("Details", "Course", new { @id = chapter.CourseId });
             }
 
             return View(model);

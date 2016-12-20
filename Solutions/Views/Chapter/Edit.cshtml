@@ -1,4 +1,4 @@
-﻿@model Solutions.Models.CourseViewModel
+﻿@model Solutions.Models.ChapterViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="well">
-        <h2>Edit Course</h2>
-        @using (Html.BeginForm("Edit", "Course", FormMethod.Post, new { @class = "form-horizontal" }))
+        <h2>Edit Chapter</h2>
+        @using (Html.BeginForm("Edit", "Chapter", FormMethod.Post, new { @class = "form-horizontal" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary()
@@ -15,9 +15,9 @@
             @Html.HiddenFor(m => m.Id)
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-4" })
+                @Html.LabelFor(m => m.Title, new { @class = "control-label col-sm-4" })
                 <div class="col-sm-4">
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                 </div>
             </div>
 
@@ -31,5 +31,5 @@
 </div>
 
 <div>
-    @Html.ActionLink("Back to Course", "Details", new { id = Model.Id })
+    @Html.ActionLink("Back to Chapter", "Details", new { id = Model.Id })
 </div>

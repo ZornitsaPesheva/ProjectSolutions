@@ -4,38 +4,43 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container">
+    <div class="well">
 
-<div>
-    <h4>Module</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Create course", "Create", "Course", new { moduleId = Model.Id, moduleName = Model.Name }, null)
-</p>
-<hr />
-<div>
-    <h4>Courses for Module</h4>
-    @if (Model.Courses.Count > 0)
-    {
-        <ul>
-            @foreach(var course in Model.Courses)
+        <h2>Details</h2>
+
+        <div>
+            <h4>Module</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index") |
+            @Html.ActionLink("Create course", "Create", "Course", new { moduleId = Model.Id, moduleName = Model.Name }, null)
+        </p>
+        <hr />
+        <div>
+            <h4>Courses for Module</h4>
+            @if (Model.Courses.Count > 0)
             {
-                <li>
-                    @Html.ActionLink(course.Name, "Details", "Course", new { Id = course.Id }, null)
-                </li>
+                <ul>
+                    @foreach (var course in Model.Courses)
+                {
+                        <li>
+                            @Html.ActionLink(course.Name, "Details", "Course", new { Id = course.Id }, null)
+                        </li>
+                    }
+                </ul>
             }
-        </ul>
-    }
- </div>
+        </div>
+    </div>
+</div>
