@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="form-group", hidden="hidden">
+                <div class="form-group">
                     @Html.LabelFor(m => m.Language, new { @class = "col-sm-4 control-label" })
                     <div class="dropdown col-sm-4">
                         @Html.DropDownListFor(m => m.Language,
@@ -42,7 +42,7 @@
 
                 if (User.IsInRole("Admin"))
                 {
-                    <div class="form-group", hidden="hidden">
+                    <div class="form-group">
                         @Html.LabelFor(m => m.Verified, new { @class = "col-sm-4 control-label" })
                         <div class="dropdown col-sm-4">
                             @Html.DropDownListFor(m => m.Verify,

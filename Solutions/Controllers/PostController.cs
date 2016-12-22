@@ -152,6 +152,9 @@ namespace Solutions.Controllers
                     //solution.LanguageId = Enum.GetNames(typeof(Languages)).ToString();
                     //solution.Verified = Enum.GetNames(typeof(Verify)).ToString();
 
+                    solution.LanguageId = editedPost.Language;
+                    solution.Verified = editedPost.Verify;
+
                     // Save post state in database
                     database.Entry(solution).State = EntityState.Modified;
                     database.SaveChanges();
