@@ -73,22 +73,25 @@
 
                 <div class="form-group">
                     <div class="col-sm-4 col-sm-offset-4">
-                        @Html.ActionLink("Cancel", "Index", "Post", null, new { @class = "btn btn-default" })
-                        <input type="submit" value="Create" class="btn btn-success" />
+                        @Html.ActionLink("Cancel", "List", "Post", null, new { @class = "btn btn-default" })
+                        @*@Html.ActionLink("Cancel", "List", "Post", new { @chapterId = Model.ChapterId}, new { @class = "btn btn-default" }})*@
+
+
+                            <input type="submit" value="Create" class="btn btn-success" />
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>
-}
-else
-{
+    }
+    else
+    {
 
-    <div class="container">
-        <div class="well">
-            <h3>You dont have rights to post Solutions!</h3>
-            <h3>Please, Register!</h3>
+        <div class="container">
+            <div class="well">
+                <h3>You dont have rights to post Solutions!</h3>
+                <h3>Please, Register!</h3>
 
+            </div>
         </div>
-    </div>
-}
+    }

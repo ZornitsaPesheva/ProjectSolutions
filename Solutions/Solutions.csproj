@@ -306,8 +306,9 @@
     <Content Include="Views\Chapter\Delete.cshtml" />
     <Content Include="Views\Chapter\Details.cshtml" />
     <Content Include="Views\Home\ListPosts.cshtml" />
-    <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Post\Delete.cshtml" />
+    <Content Include="Views\Post\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -41,9 +41,9 @@
                         <td>
                             @if (User.IsInRole("Admin") || post.IsAuthor(User.Identity.Name))
                             {
-                                @Html.ActionLink("Edit ", "Edit", "Post", new { @id = post.Id }, null)
+                                @Html.ActionLink("Edit  ", "Edit", "Post", new { @id = post.Id }, null)
 
-                                @Html.ActionLink("Delete ", "Delete", "Post", new { @id = post.Id }, null)
+                                @Html.ActionLink("Delete  ", "Delete", "Post", new { @id = post.Id }, null)
                             }
                         </td>
 

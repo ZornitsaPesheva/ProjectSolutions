@@ -38,8 +38,12 @@
                             <td>@post.Author.FullName</td>
                             <td>@post.Verified</td>
                             <td>
-                                @Html.ActionLink("Edit", "Create", "Post", new { @id = post.Id }, null)
-                                @Html.ActionLink("Delete", "Delete", "Post", new { @id = post.Id }, null)
+                                @if (User.IsInRole("Admin") || post.IsAuthor(User.Identity.Name))
+                                {
+                                    @Html.ActionLink("Edit  ", "Edit", "Post", new { @id = post.Id }, null)
+
+                                    @Html.ActionLink("Delete  ", "Delete", "Post", new { @id = post.Id }, null)
+                                }
                             </td>
 
                         </tr>
