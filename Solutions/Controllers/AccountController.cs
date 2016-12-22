@@ -149,9 +149,22 @@ namespace Solutions.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var database = new ApplicationDbContext();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, FullName = model.FullName, Email = model.Email };
+
+                // Check for existing User (Email)
+                var userOld = database.Users.Where(m => m.Email == user.Email).Count();
+
+                if (userOld != 0)
+                {
+                    //If Exist, go to Login view
+                    database.Dispose();
+                    return RedirectToAction("Login");
+                }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 var addRoleResult = UserManager.AddToRole(user.Id, "User");
@@ -166,12 +179,14 @@ namespace Solutions.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    database.Dispose();
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
+            database.Dispose();
             return View(model);
         }
 
