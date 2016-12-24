@@ -5,38 +5,32 @@
 }
 
 <div class="container">
-    <div class="well">
+
         <h1><strong>@Html.DisplayFor(model => model.Name)</strong></h1>
 
         @if (Model.Courses.Count > 0)
         {
             <div class="row">
                 <table class="table table-striped table-hover col-sm-12">
-                    <thead>
-                        <tr>
-                            <th><h3><strong>Name</strong></h3></th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
                         @foreach (var course in Model.Courses)
                         {
                             <tr>
                                 <td>
-                                    <h4>
-                                        <h3>
+                                    <h2>
+
                                             <strong>
-                                                @Html.ActionLink(string.Format($"{course.Name}"), "ListChapters", "Home", new { @courseId = course.Id }, null)
+                                                @Html.ActionLink(string.Format($"{course.Name}"), "ListChapters", "Home", new { @courseId = course.Id }, new { @style = "text-decoration:none;" })
                                             </strong>
-                                        </h3>
-                                    </h4>
+
+                                    </h2>
                             </tr>
                         }
-                    </tbody>
+
                 </table>
             </div>
         }
-    </div>
+
 </div>
 
 

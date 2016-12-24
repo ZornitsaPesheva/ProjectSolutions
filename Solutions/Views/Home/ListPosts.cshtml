@@ -34,7 +34,8 @@
                 {
                     <tr>
                         <td>@post.Id</td>
-                        <td><a href="@Html.DisplayFor(modelItem => post.Link)">@Html.DisplayFor(modelItem => post.Title)</a></td>
+                        <td><a href="@Html.DisplayFor(modelItem => post.Link)" style="text-decoration:none">
+                            @Html.DisplayFor(modelItem => post.Title)</a></td>
                         <td>@post.LanguageId</td>
                         <td>@post.Author.FullName</td>
                         <td>@post.Verified</td>
