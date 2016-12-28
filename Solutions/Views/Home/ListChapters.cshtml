@@ -17,9 +17,9 @@
                         {
                             <tr>
                                 <td>
-                                    <h4>
+                                    <h5>
                                         @Html.ActionLink(string.Format($"{chapter.Title}"), "ListPosts", "Home", new { @chapterId = chapter.Id }, new { @style = "text-decoration:none;" })
-                                    </h4>
+                                    </h5>
                                 </td>
                                 <td><h4><strong>@chapter.Posts.Count</strong></h4></td>
                             </tr>
