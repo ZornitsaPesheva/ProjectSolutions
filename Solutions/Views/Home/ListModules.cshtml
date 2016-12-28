@@ -8,18 +8,30 @@
     <div class="row">
         <h2 style="margin-top:100px">Browse a chapter to post your solution or to find other's </h2>
         <table class="table table-hover" style="margin-top:100px">
+            <tr>
+                <th>
+                    Module:
+                </th>
+                <th>
+                    Number of courses:
+                </th>
+            </tr>
             @foreach (var module in Model)
             {
-                <tr>
-                    <td>
-                        
-                        <h1>
-                            <!-- изтрих ({module.Courses.Count})-->
-                            @Html.ActionLink(string.Format($"{module.Name} "),
-                        "ListCourses", "Home", new { @moduleId = module.Id }, new { @style = "text-decoration:none;" })
-                        </h1>
-                    </td>
-                </tr>
+                <tr onclick="location.href = '@(Url.Action("ListCourses", "Home", new { @moduleId = module.Id }))'">
+
+                        <td>
+                            <h1>
+                                @module.Name
+                            </h1>
+                        </td>
+
+                        <td>
+                            <h1>
+                               @module.Courses.Count
+                            </h1>
+                        </td>
+                    </tr>
             }
         </table>
     </div>
