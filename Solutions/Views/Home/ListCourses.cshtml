@@ -17,16 +17,13 @@
                         {
                             <tr>
                                 <td>
-                                    <h2>
-
-                                            <strong>
-                                                @Html.ActionLink(string.Format($"{course.Name}"), "ListChapters", "Home", new { @courseId = course.Id }, new { @style = "text-decoration:none;" })
-                                            </strong>
-
-                                    </h2>
+                                    <h3>
+                                        <strong>
+                                            @Html.ActionLink(string.Format($"{course.Name}"), "ListChapters", "Home", new { @courseId = course.Id }, new { @style = "text-decoration:none;" })
+                                        </strong>
+                                    </h3>
                             </tr>
                         }
-
                 </table>
             </div>
         }
