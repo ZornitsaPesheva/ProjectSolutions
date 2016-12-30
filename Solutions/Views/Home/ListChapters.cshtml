@@ -6,19 +6,28 @@
 
 <div class="container">
 
-        <h1><strong>@Html.DisplayFor(model => model.Name)</strong></h1>
+        <h1><strong>Course: @Html.DisplayFor(model => model.Name)</strong></h1>
 
         @if (Model.Chapters.Count > 0)
         {
             <div class="row">
                 <table class="table table-striped table-hover col-sm-12">
 
+                    <tr>
+                        <th>
+                            Chpter:
+                        </th>
+                        <th>
+                            Number of solutions:
+                        </th>
+                    </tr>
                         @foreach (var chapter in Model.Chapters)
                         {
-                            <tr>
+
+                               <tr onclick="location.href = '@(Url.Action("ListPosts", "Home", new { @chapterId = chapter.Id }))'">
                                 <td>
                                     <h5>
-                                        @Html.ActionLink(string.Format($"{chapter.Title}"), "ListPosts", "Home", new { @chapterId = chapter.Id }, new { @style = "text-decoration:none;" })
+                                        @chapter.Title
                                     </h5>
                                 </td>
                                 <td><h4><strong>@chapter.Posts.Count</strong></h4></td>
