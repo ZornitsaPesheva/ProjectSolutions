@@ -36,6 +36,8 @@ namespace Solutions.Models
 
         public virtual IDbSet<Chapter> Chapters { get; set; }
 
+        public virtual IDbSet<Request> Requests { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
